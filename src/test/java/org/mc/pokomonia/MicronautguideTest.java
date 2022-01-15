@@ -1,4 +1,4 @@
-package example.micronaut;
+package org.mc.pokomonia;
 
 import io.micronaut.runtime.EmbeddedApplication;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
