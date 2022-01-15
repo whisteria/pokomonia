@@ -3,6 +3,7 @@ package org.mc.pokomonia.services;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
+import org.mc.pokomonia.model.Pokemon;
 
 import java.io.FileReader;
 

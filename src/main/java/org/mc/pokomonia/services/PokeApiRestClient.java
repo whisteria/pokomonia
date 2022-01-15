@@ -7,6 +7,7 @@ import io.micronaut.http.client.annotation.Client;
 import io.micronaut.http.uri.UriBuilder;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
+import org.mc.pokomonia.model.Pokemon;
 
 import java.util.Map;
 
@@ -21,10 +22,6 @@ public class PokeApiRestClient {
             super(message, e);
         }
     }
-
-    public record Pokemon(String name, String description, String habitat, boolean isLegendary) {
-    }
-
 
 
     @Client("https://pokeapi.co/api/v2")
