@@ -2,6 +2,7 @@ package org.mc.pokomonia.clients;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import io.micronaut.context.annotation.Primary;
+import io.micronaut.http.HttpResponse;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
 import io.micronaut.http.uri.UriBuilder;
@@ -16,14 +17,6 @@ import java.util.Map;
 @Singleton
 public class PokeApi {
 
-    public static class PokemonDeserializationException extends RuntimeException {
-
-        public PokemonDeserializationException(String message, Exception e) {
-            super(message, e);
-        }
-    }
-
-
     @Client("https://pokeapi.co/api/v2")
     @Inject
     HttpClient httpClient;
@@ -33,20 +26,16 @@ public class PokeApi {
                 .expand(Map.of("name", name))
                 .toString();
 
-        JsonNode jsonNode = httpClient.toBlocking().retrieve(uri, JsonNode.class);
-        return toPokemon(name, jsonNode);
+        HttpResponse<JsonNode> response = httpClient.toBlocking().exchange(uri, JsonNode.class);
+        return toPokemon(name, response.body());
     }
 
-    public static Pokemon toPokemon(String name, JsonNode jsonNode) throws PokemonDeserializationException {
-        try {
-            // todo description
-            String description = "todo";
-            String habitat = jsonNode.get("habitat").get("name").asText();
-            boolean isLegendary = jsonNode.get("is_legendary").asBoolean();
-            return new Pokemon(name, description, habitat, isLegendary);
-        } catch (Exception e) {
-            throw new PokemonDeserializationException("could not deserialize " + name, e);
-        }
+    public static Pokemon toPokemon(String name, JsonNode jsonNode) {
+        // todo description
+        String description = "todo";
+        String habitat = jsonNode.get("habitat").get("name").asText();
+        boolean isLegendary = jsonNode.get("is_legendary").asBoolean();
+        return new Pokemon(name, description, habitat, isLegendary);
     }
 
 }
