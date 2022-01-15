@@ -1,4 +1,4 @@
-package org.mc.pokomonia.services;
+package org.mc.pokomonia.clients;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import io.micronaut.http.HttpRequest;
@@ -9,9 +9,9 @@ import jakarta.inject.Inject;
 
 import java.util.Map;
 
-public class FunTranslationsClient {
+public class FunTranslator {
 
-    public record FunTranslationRequest(String text) {
+    record FunTranslationRequest(String text) {
     }
 
     @Client("https://api.funtranslations.com")

@@ -11,8 +11,8 @@ import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.Test;
 import org.mc.pokomonia.model.Pokemon;
-import org.mc.pokomonia.services.FunTranslationsClient;
-import org.mc.pokomonia.services.PokeApiRestClient;
+import org.mc.pokomonia.clients.FunTranslator;
+import org.mc.pokomonia.clients.PokeApi;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -27,13 +27,13 @@ class PokemonControllerTest {
     @Client("/")
     HttpClient client;
 
-    private final PokeApiRestClient pokeApiRestClientMock = mock(PokeApiRestClient.class);
-    private final FunTranslationsClient funTranslationsClientMock = mock(FunTranslationsClient.class);
+    private final PokeApi pokeApiMock = mock(PokeApi.class);
+    private final FunTranslator funTranslatorMock = mock(FunTranslator.class);
 
     @Test
     public void get() {
         Pokemon expected = new Pokemon("mewtwo", "todo", "rare", true);
-        when(pokeApiRestClientMock.getByName(any())).thenReturn(expected);
+        when(pokeApiMock.getByName(any())).thenReturn(expected);
         HttpRequest<String> request = HttpRequest.GET("/pokemon/mewtwo");
         final HttpResponse<Pokemon> response = client.toBlocking().exchange(request, Pokemon.class);
         assertEquals(expected, response.body());
@@ -42,7 +42,7 @@ class PokemonControllerTest {
 
     @Test
     public void getWithThrow() {
-        when(pokeApiRestClientMock.getByName(any())).thenThrow(new IllegalStateException("error"));
+        when(pokeApiMock.getByName(any())).thenThrow(new IllegalStateException("error"));
         HttpRequest<String> request = HttpRequest.GET("/pokemon/mewtwo");
         HttpClientResponseException e = assertThrows(
                 HttpClientResponseException.class,
@@ -56,22 +56,33 @@ class PokemonControllerTest {
     @Test
     public void translated() {
         Pokemon pokemon = new Pokemon("mewtwo", "todo", "rare", true);
-        when(pokeApiRestClientMock.getByName(any())).thenReturn(pokemon);
-        when(funTranslationsClientMock.translate(any(), any())).thenReturn("my translation");
+        when(pokeApiMock.getByName(any())).thenReturn(pokemon);
+        when(funTranslatorMock.translate(any(), any())).thenReturn("my translation");
         HttpRequest<String> request = HttpRequest.GET("/pokemon/translated/mewtwo");
         final HttpResponse<Pokemon> response = client.toBlocking().exchange(request, Pokemon.class);
         assertEquals(new Pokemon("mewtwo", "my translation", "rare", true), response.body());
         assertEquals(HttpStatus.OK, response.status());
     }
 
-    @MockBean(PokeApiRestClient.class)
-    public PokeApiRestClient pokeApiRestClient() {
-        return pokeApiRestClientMock;
+    @Test
+    public void translationFails() {
+        Pokemon pokemon = new Pokemon("mewtwo", "todo", "rare", true);
+        when(pokeApiMock.getByName(any())).thenReturn(pokemon);
+        when(funTranslatorMock.translate(any(), any())).thenThrow(new RuntimeException("no translation"));
+        HttpRequest<String> request = HttpRequest.GET("/pokemon/translated/mewtwo");
+        final HttpResponse<Pokemon> response = client.toBlocking().exchange(request, Pokemon.class);
+        assertEquals(new Pokemon("mewtwo", "todo", "rare", true), response.body());
+        assertEquals(HttpStatus.OK, response.status());
     }
 
-    @MockBean(FunTranslationsClient.class)
-    public FunTranslationsClient funTranslationsClient() {
-        return funTranslationsClientMock;
+    @MockBean(PokeApi.class)
+    public PokeApi pokeApi() {
+        return pokeApiMock;
+    }
+
+    @MockBean(FunTranslator.class)
+    public FunTranslator funTranslator() {
+        return funTranslatorMock;
     }
 
 }

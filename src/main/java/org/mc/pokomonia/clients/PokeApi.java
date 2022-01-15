@@ -1,4 +1,4 @@
-package org.mc.pokomonia.services;
+package org.mc.pokomonia.clients;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import io.micronaut.context.annotation.Primary;
@@ -14,7 +14,7 @@ import java.util.Map;
 
 @Primary
 @Singleton
-public class PokeApiRestClient {
+public class PokeApi {
 
     public static class PokemonDeserializationException extends RuntimeException {
 

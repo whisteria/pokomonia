@@ -1,4 +1,4 @@
-package org.mc.pokomonia.services;
+package org.mc.pokomonia.clients;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -8,10 +8,10 @@ import org.mc.pokomonia.model.Pokemon;
 import java.io.FileReader;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mc.pokomonia.services.PokeApiRestClient.*;
+import static org.mc.pokomonia.clients.PokeApi.*;
 
 
-class PokeApiRestClientTest {
+class PokeApiTest {
 
     @Test
     void getPokemon() throws Exception {
