@@ -1,4 +1,4 @@
-package org.mc.pokomonia.clients;
+package org.mc.pokomonia.clients.pokeapi;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import io.micronaut.context.annotation.Primary;
@@ -12,7 +12,7 @@ import org.mc.pokomonia.model.Pokemon;
 
 import java.util.Map;
 
-import static org.mc.pokomonia.clients.JsonNodeToPokemon.toPokemon;
+import static org.mc.pokomonia.clients.pokeapi.JsonNodeToPokemon.toPokemon;
 
 @Primary
 @Singleton

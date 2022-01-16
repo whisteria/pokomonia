@@ -1,4 +1,4 @@
-package org.mc.pokomonia.clients;
+package org.mc.pokomonia.clients.pokeapi;
 
 import com.fasterxml.jackson.core.JsonPointer;
 import com.fasterxml.jackson.databind.JsonNode;

@@ -9,7 +9,7 @@ import io.micronaut.http.client.exceptions.HttpClientResponseException;
 import io.micronaut.http.server.exceptions.ExceptionHandler;
 import jakarta.inject.Singleton;
 
-import static org.mc.pokomonia.clients.JsonNodeToPokemon.PokemonParseException;
+import static org.mc.pokomonia.clients.pokeapi.JsonNodeToPokemon.PokemonParseException;
 
 
 /**

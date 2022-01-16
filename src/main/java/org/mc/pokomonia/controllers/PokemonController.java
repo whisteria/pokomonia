@@ -3,8 +3,8 @@ package org.mc.pokomonia.controllers;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import jakarta.inject.Inject;
-import org.mc.pokomonia.clients.FunTranslator;
-import org.mc.pokomonia.clients.PokeApi;
+import org.mc.pokomonia.clients.pokeapi.PokeApi;
+import org.mc.pokomonia.clients.translate.FunTranslator;
 import org.mc.pokomonia.model.Pokemon;
 
 

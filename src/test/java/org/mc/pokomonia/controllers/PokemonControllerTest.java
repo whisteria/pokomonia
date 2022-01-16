@@ -10,8 +10,8 @@ import io.micronaut.test.annotation.MockBean;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.Test;
-import org.mc.pokomonia.clients.FunTranslator;
-import org.mc.pokomonia.clients.PokeApi;
+import org.mc.pokomonia.clients.pokeapi.PokeApi;
+import org.mc.pokomonia.clients.translate.FunTranslator;
 import org.mc.pokomonia.model.Pokemon;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

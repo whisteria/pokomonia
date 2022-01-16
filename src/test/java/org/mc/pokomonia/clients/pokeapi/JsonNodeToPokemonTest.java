@@ -1,4 +1,4 @@
-package org.mc.pokomonia.clients;
+package org.mc.pokomonia.clients.pokeapi;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.jupiter.api.Test;
@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mc.pokomonia.TestSupport.jsonNodeFromFile;
 import static org.mc.pokomonia.TestSupport.jsonNodeFromString;
-import static org.mc.pokomonia.clients.JsonNodeToPokemon.PokemonParseException;
+import static org.mc.pokomonia.clients.pokeapi.JsonNodeToPokemon.PokemonParseException;
 
 
 class JsonNodeToPokemonTest {

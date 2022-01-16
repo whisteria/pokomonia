@@ -13,7 +13,7 @@ public class TestSupport {
             return new ObjectMapper().readTree(reader);
         }
     }
-//
+
     public static JsonNode jsonNodeFromString(String jsonString) throws Exception {
         try (StringReader reader = new StringReader(jsonString)) {
             return new ObjectMapper().readTree(reader);

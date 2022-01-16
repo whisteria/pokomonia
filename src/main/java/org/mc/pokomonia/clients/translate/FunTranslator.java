@@ -1,4 +1,4 @@
-package org.mc.pokomonia.clients;
+package org.mc.pokomonia.clients.translate;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import io.micronaut.http.HttpRequest;
