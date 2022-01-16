@@ -12,6 +12,7 @@ import org.mc.pokomonia.model.Pokemon;
 
 import java.util.Map;
 
+import static org.mc.pokomonia.clients.JsonNodeToPokemon.toPokemon;
 
 @Primary
 @Singleton
@@ -28,14 +29,6 @@ public class PokeApi {
 
         HttpResponse<JsonNode> response = httpClient.toBlocking().exchange(uri, JsonNode.class);
         return toPokemon(name, response.body());
-    }
-
-    public static Pokemon toPokemon(String name, JsonNode jsonNode) {
-        // todo description
-        String description = "todo";
-        String habitat = jsonNode.get("habitat").get("name").asText();
-        boolean isLegendary = jsonNode.get("is_legendary").asBoolean();
-        return new Pokemon(name, description, habitat, isLegendary);
     }
 
 }

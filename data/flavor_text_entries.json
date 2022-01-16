@@ -1,0 +1,57 @@
+[
+  {
+    "flavor_text": "sample text for not-en",
+    "language": {
+      "name": "not-en",
+      "url": "https://pokeapi.co/api/v2/language/9/"
+    },
+    "version": {
+      "name": "red",
+      "url": "https://pokeapi.co/api/v2/version/1/"
+    }
+  },
+  {
+    "flavor_text": "It was created by\na scientist after\nyears of horrific\fgene splicing and\nDNA engineering\nexperiments.",
+    "language": {
+      "name": "not-en",
+      "url": "https://pokeapi.co/api/v2/language/9/"
+    },
+    "version": {
+      "name": "blue",
+      "url": "https://pokeapi.co/api/v2/version/2/"
+    }
+  },
+  {
+    "flavor_text": "correct result for the test",
+    "language": {
+      "name": "en",
+      "url": "https://pokeapi.co/api/v2/language/9/"
+    },
+    "version": {
+      "name": "yellow",
+      "url": "https://pokeapi.co/api/v2/version/3/"
+    }
+  },
+  {
+    "flavor_text": "Because its battle\nabilities were\nraised to the\fultimate level, it\nthinks only of de­\nfeating its foes.",
+    "language": {
+      "name": "en",
+      "url": "https://pokeapi.co/api/v2/language/9/"
+    },
+    "version": {
+      "name": "gold",
+      "url": "https://pokeapi.co/api/v2/version/4/"
+    }
+  },
+  {
+    "flavor_text": "It usually remains\nmotionless to con­\nserve energy, so\fthat it may un­\nleash its full\npower in battle.",
+    "language": {
+      "name": "en",
+      "url": "https://pokeapi.co/api/v2/language/9/"
+    },
+    "version": {
+      "name": "silver",
+      "url": "https://pokeapi.co/api/v2/version/5/"
+    }
+  }
+]
