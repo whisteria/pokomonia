@@ -24,8 +24,11 @@ public class FunTranslator {
                 .toString();
 
         HttpRequest<FunTranslationRequest> post = HttpRequest.POST(uri, new FunTranslationRequest(text));
-        JsonNode response = httpClient.toBlocking().retrieve(post, JsonNode.class);
-        return response.get("contents").get("text").asText();
+        return getTranslation(httpClient.toBlocking().retrieve(post, JsonNode.class));
+    }
+
+    public static String getTranslation(JsonNode response) {
+        return response.get("contents").get("translated").asText();
     }
 
 }
